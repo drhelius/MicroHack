@@ -12,8 +12,13 @@ Open the [Azure Portal](https://portal.azure.com) and login using a user account
 
 Search for *Container Registries* and click *Create*
 
-In the *Basics* tab, select the resource group you want to deploy your new resources to (it can be the one with the app service or a new one).
-You need to give the container registry a name which needs to be globally unique since it will be accessible via a URL with the name in it (just like the web app), so you can use something like "microhackregistryxyz" (only alphanumeric characters are allowed). Choose your preferred location. Select *Basic* as *Pricing plan* and leave the other settings/tabs as is, then hit *Review + create* and again *Create*:
+In the *Basics* tab, select the resource group you want to deploy your new resources to (for this example you must use the same resource group you used to create the app service).
+
+You need to give the container registry a name which needs to be globally unique since it will be accessible via a URL with the name in it (just like the web app), so you can use something like "microhackregistryxyz" (only alphanumeric characters are allowed).
+
+For this example you will choose "Spain Central" as location.
+
+Select *Basic* as *Pricing plan* and leave the other settings/tabs as is, then hit *Review + create* and again *Create*:
 
 ![image](./img/challenge-2-createregistry.jpg)
 
