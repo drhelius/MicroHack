@@ -37,9 +37,8 @@ After completing this MicroHack you will:
 
 This MicroHack has a few but important prerequisites to be understood before starting this lab!
 
-* Your own Azure subscription with Owner RBAC rights at the subscription level
-  * [Azure Evaluation free account](https://azure.microsoft.com/en-us/free/search/?OCID=AIDcmmzzaokddl_SEM_0fa7acb99db91c1fb85fcfd489e5ca6e:G:s&ef_id=0fa7acb99db91c1fb85fcfd489e5ca6e:G:s&msclkid=0fa7acb99db91c1fb85fcfd489e5ca6e)
-* Your own [GitHub account](https://github.com/)
+* You will be provided a shared Azure subscription: Please note your user and password.
+* Your need your own [GitHub account](https://github.com/)
 * [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) (Hint: Make sure to use the lastest version)
 * [Azure PowerShell Guest Configuration Cmdlets](https://learn.microsoft.com/en-us/azure/governance/machine-configuration/machine-configuration-create-setup#install-the-module-from-the-powershell-gallery)
   * It is not possible to run those commands from Azure Cloud Shell
@@ -47,15 +46,15 @@ This MicroHack has a few but important prerequisites to be understood before sta
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Git SCM](https://git-scm.com/download/)
 
-You need to execute this script in the Azure Cloud Shell to deploy the initial App Service resource that we will start with in a resource group named "MicroHack-AppServiceToContainerApp"
+You will work in shared Azure subscription. Once you login you will have access to a resource group named as your user name. You will be able to create resources in this resource group. All instructions in this MicroHack will use your user name as the resource group name, e.g. if your user name is "johndoe" then you will use "johndoe" as the resource group name in all commands.
 
-`az group create --name "MicroHack-AppServiceToContainerApp" --location "westeurope"`
+Execute this script in the Azure Cloud Shell to deploy the initial App Service resource that you will use in your resource group:
 
-`az appservice plan create --name "microhack-appserviceplan" --resource-group "MicroHack-AppServiceToContainerApp" --location "westeurope" --is-linux --sku "FREE"`
+`az appservice plan create --name "microhack-appserviceplan" --resource-group "<your_user_name>" --location "spaincentral" --is-linux --sku "FREE"`
 
-To create the web app, you need to run this command. Web app names must be globally unique, since the name will be used in the URL. You can name the web app something like "microhack-webapp-" and then append a name or some random characters, e.g. "microhack-webapp-johndoe22" or "microhack-webapp-jdkas":
+To create the web app, you need to run this command. Web app names must be globally unique, since the name will be used in the URL. You can name the web app something like "microhack-webapp-" and then append your username or some random characters, e.g. "microhack-webapp-johndoe22" or "microhack-webapp-jdkas":
 
-`az webapp create --name "<your_globally_unique_webapp_name>" --resource-group "MicroHack-AppServiceToContainerApp" --plan "microhack-appserviceplan" --runtime "DOTNETCORE:8.0" --deployment-source-url "https://github.com/ArneDecker3v08mk/MicroHack-AppServiceToContainerAppStart" --deployment-source-branch "main"`
+`az webapp create --name "<your_globally_unique_webapp_name>" --resource-group "<your_user_name>" --plan "microhack-appserviceplan" --runtime "DOTNETCORE:8.0" --deployment-source-url "https://github.com/ArneDecker3v08mk/MicroHack-AppServiceToContainerAppStart" --deployment-source-branch "main"`
 
  **Troubleshooting:**
  If you see this error, then the name of the web app was already used and you need to try another name:
@@ -64,7 +63,7 @@ To create the web app, you need to run this command. Web app names must be globa
 
 It may take up to 5 minutes for the web app to start in the background.
 
-You also need to fork this GitHub repository that you will work with: https://github.com/ArneDecker3v08mk/MicroHack-AppServiceToContainerAppStart 
+You also need to fork this GitHub repository that you will work with: https://github.com/ArneDecker3v08mk/MicroHack-AppServiceToContainerAppStart
 
 ## Challenge 1 - Understand the migratable estate 
 
