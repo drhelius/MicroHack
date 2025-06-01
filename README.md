@@ -37,18 +37,14 @@ After completing this MicroHack you will:
 
 This MicroHack has a few but important prerequisites to be understood before starting this lab!
 
-* You will be provided a shared Azure subscription: Please note your user and password.
-* Your need your own [GitHub account](https://github.com/)
-* [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) (Hint: Make sure to use the lastest version)
-* [Azure PowerShell Guest Configuration Cmdlets](https://learn.microsoft.com/en-us/azure/governance/machine-configuration/machine-configuration-create-setup#install-the-module-from-the-powershell-gallery)
-  * It is not possible to run those commands from Azure Cloud Shell
-  * Please make sure you have at least Version 3.4.2 installs with the following Command: ```Install-Module -Name GuestConfiguration -RequiredVersion 3.4.2```
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Git SCM](https://git-scm.com/download/)
+* You will be provided with a shared Azure subscription: Please note your user and password.
+* You need your own [GitHub account](https://github.com/)
+* [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) (recommended but can also be done in Azure Cloud Shell)
+* [Visual Studio Code](https://code.visualstudio.com/) (recommended but can also be done in GitHub web editor)
 
-You will work in shared Azure subscription. Once you login you will have access to a resource group named as your user name. You will be able to create resources in this resource group. All instructions in this MicroHack will use your user name as the resource group name, e.g. if your user name is "johndoe" then you will use "johndoe" as the resource group name in all commands.
+You will work in a shared Azure subscription. Once you login you will have access to a resource group named as your user name. You will be able to create resources in this resource group. All instructions in this MicroHack will use your user name as the resource group name, e.g. if your user name is "johndoe" then you will use "johndoe" as the resource group name in all commands.
 
-Execute this script in the Azure Cloud Shell to deploy the initial App Service resource that you will use in your resource group:
+Execute this script either in your local machine or in Azure Cloud Shell to deploy the initial App Service resource that you will use in your resource group:
 
 `az appservice plan create --name "microhack-appserviceplan" --resource-group "<your_user_name>" --location "spaincentral" --is-linux --sku "FREE"`
 

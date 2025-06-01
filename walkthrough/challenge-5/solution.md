@@ -10,7 +10,7 @@ Please make sure thet you successfully completed [Challenge 4](../challenge-4/so
 
 The web interface is already prepared, you can check it in the *Index.cshtml* file in the *Pages/Shared* folder in the repository. It takes the input from the text field and then calls an API where the AI model is hosted. Let's begin with hosting the model.
 
-In the Azure Portalm, create a new Container App. You can call it `microhack-aiapp`. Make sure that the Container App Environment is the one you created in challenge 2 where the other app is already running.
+In the Azure Portal, create a new Container App. You can call it `microhack-aiapp`. Make sure that the Container App Environment is the one you created in challenge 2 where the other app is already running.
 
 ![image](./img/challenge-5-createapp-basics.jpg)
 
