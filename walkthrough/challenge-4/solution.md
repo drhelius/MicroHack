@@ -17,7 +17,12 @@ Select *Microsoft* as the ID provider:
 ![image](./img/challenge-4-authenticationselection.jpg)
 
 Select `Workforce` as tenant type.
-Select `Create new app registration`, name it something like "microhack-containerapp" and select `Current tenant - Single tenant` to create an App Registration in your Azure Entra ID tenant. Set the *Client secret expiration* to 180 days. Then mark the `Require authentication` to make sure only authenticated users can access the app. If the authentication fails, you can choose to which error page you want to redirect unauthenticated users. Leave the rest as is and hit *Add* to activate the authentication (this may take up to a minute in the background):
+
+Select `Create new app registration`, name it something like "microhack-containerapp" and select `Current tenant - Single tenant` to create an App Registration in your Azure Entra ID tenant.
+
+Set the *Client secret expiration* to 180 days.
+
+Mark the `Require authentication` to make sure only authenticated users can access the app. If the authentication fails, you can choose to which error page you want to redirect unauthenticated users. Leave the rest as is and hit *Add* to activate the authentication (this may take up to a minute in the background):
 
 ![image](./img/challenge-4-authenticationsetup.jpg)
 
@@ -25,7 +30,11 @@ This will deploy a sidecar container to your app. Before a user can access the c
 
 ### **Task 2: Configure Autoscaling**
 
-A single Container App instance will not be able to endlessly serve an increasing amount of users. It makes sense to limit the number of connections of a single instance and then scale in and out. You can quickly configure automatic scaling. Open the *Scale* tab in the *Application* section. It makes sense to always have at least one instance of the Container App running. You can let it scale to zero which might save some cost, but starting an instance might take some time which can be inconveniant for users. Set the `Min replicas` to 1:
+A single Container App instance will not be able to endlessly serve an increasing amount of users.
+
+It makes sense to limit the number of connections of a single instance and then scale in and out. You can quickly configure automatic scaling.
+
+Open the *Scale* tab in the *Application* section. It makes sense to always have at least one instance of the Container App running. You can let it scale to zero which might save some cost, but starting an instance might take some time which can be inconveniant for users. Set the `Min replicas` to 1:
 
 ![image](./img/challenge-4-scaling.jpg)
 
@@ -37,11 +46,13 @@ As you can see, you can simply configure the scaling of your app without managin
 
 ### **Task 3: Enable Monitoring and Logging**
 
-In production scenarios you want to know whats happening in your systems. Observabiliy is important. You can simply enable monitoring and logging for yout Azure Container Apps. Go to the *Logging options* in the *Monitoring* section of the Container Apps Environment in the portal and activate the `Azure Log Analytics` logging. The logs will be stores in a log analytics workspace which must first be created. Choose the resource group of the MicroHack and, hit *Create new* and enter a name, then hit *Save* in the bottom:
+In production scenarios you want to know what is happening in your systems. Observabiliy is important.  You can simply enable monitoring and logging for yout Azure Container Apps.
+
+Go to the *Logging options* in the *Monitoring* section of the Container Apps Environment in the portal and activate the `Azure Log Analytics` logging. The logs will be stores in a log analytics workspace which must first be created. Choose the resource group of the MicroHack and, hit *Create new* and enter a name, then hit *Save* in the bottom:
 
 ![image](./img/challenge-4-logging.jpg)
 
-You may need to wait some time until the logs start showing up in the Log Analytics workspace. You can play around with querys and check what information is available in the logs. Open the *Logs* tab of the Container App and create a new query. For example, you can check all the successful requests with this query:
+You may need to wait some time until the logs start showing up in the Log Analytics workspace. You can play around with querys and check what information is available in the logs. Open the *Logs* tab of the Container App and create a new query. For example, you can check all the successful requests with this query (make sure to replace the `ContainerAppName` with the name of your Container App):
 
     ContainerAppConsoleLogs
     | where ContainerAppName == "microhack-containerapp"
@@ -55,7 +66,9 @@ Encryption traffic is crucial to secure the communication from the clients to th
 
 You finally reached the most difficult task!
 
-The good news is that Azure Container Apps takes care of all of this for you. When you set up the ingress for your Container App you did not check the option to allow insecure connections, remember ;)? The Container Apps automatically ensures that all traffic to and from your application is encrypted. By default, the Container Apps use HTTPS and provide a managed certificate, so there’s no need to obtain and manage your own certificate. Additionally, any unencrypted HTTP traffic is automatically redirected to HTTPS, ensuring that all communications are secure — without you needing to do anything extra!
+The good news is that Azure Container Apps takes care of all of this for you. When you set up the ingress for your Container App you did not check the option to allow insecure connections, remember? ;) Container Apps automatically ensures that all traffic to and from your application is encrypted.
+
+By default, Container Apps use HTTPS and provide a managed certificate, so there’s no need to obtain and manage your own certificate. Additionally, any unencrypted HTTP traffic is automatically redirected to HTTPS, ensuring that all communications are secure — without you needing to do anything extra!
 
 Remember, you can create custom domains and manage certificates in Azure as well!
 
