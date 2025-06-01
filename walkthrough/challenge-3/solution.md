@@ -13,6 +13,9 @@ Open the [Azure Portal](https://portal.azure.com) and navigate to the resource g
 You are now in the wizzard to create both a Container App Environment and the Container App itself. The Environment is comparable to an App Service and is used as a runtime to manage resources that are shared by multiple apps. The Container Apps itself are comparable to a Web App, they host the workloads.
 
 Give yor container app a name, e.g. *microhack-containerapp* and choose *Container image* as deployment source and make sure that you selected the right resource group.
+
+Use *Spain Central* as the region, since this is where your Container Registry is located.
+
 Next, you will configure the environment by clicking *Create new* under the *Container Apps Environment* field:
 
 ![image](./img/challenge-3-appbasics.jpg)
@@ -29,17 +32,31 @@ In the *Monitoring* tab change the settings *Don't save logs*, we don't need tha
 
 ![image](./img/challenge-3-environmentmonitoring.jpg)
 
-Leave the networking tab as is and hit *Create* in the bottom to return to the Container App wizzard. Switch to the *Container* tab. Give the container a name (e.g., "microhack-webapp") and select an image to deploy. You want to deploy an image from the Azure Container Registry, then select the registry you created, the image and the tag. You can also select the amount of resources you want to allocate to the Container App, 1 CPU core and 2 Gi memory should work for now. Leave the *Command override*, *Development stack* and "Environment variables* as is.
+Leave the networking tab as is and hit *Create* in the bottom to return to the Container App wizzard.
+
+Switch to the *Container* tab.
+
+Give the container a name (e.g., "microhack-webapp") and select an image to deploy.
+
+You want to deploy an image from the Azure Container Registry, then select the registry you created, the image and the tag.
+
+You can also select the amount of resources you want to allocate to the Container App, 1 CPU core and 2 Gi memory should work for now. Leave the *Command override*, *Development stack* and "Environment variables* as is.
 
 ![image](./img/challenge-3-appcontainer.jpg)
 
-Switch to the *Ingress* tab. Here you can define wheather the Container App is accessible from the outside. Click `Enable` to allow traffic to the app. To make it accessible via public internet, you must select `Accepting traffic from anywhere`, otherwise only other Container Apps in the same environment could access the app (this is usually done for internal apps/services). The target port must match the port that you defined in the Dockerfile (port 8080). Keep the *Insecure connections* as not allowed (but keep this setting in mind for later).
+Switch to the *Ingress* tab.
+
+Here you can define wheather the Container App is accessible from the outside. Click `Enable` to allow traffic to the app.
+
+To make it accessible via public internet, you must select `Accepting traffic from anywhere`, otherwise only other Container Apps in the same environment could access the app (this is usually done for internal apps/services).
+
+The target port must match the port that you defined in the Dockerfile (port 8080). Keep the *Insecure connections* as not allowed (but keep this setting in mind for later).
 
 ![image](./img/challenge-3-appingress.jpg)
 
 Now hit *Review + create* and *Create* to deploy the Container App. It will not only deploy the app itself but also resources like a load balancer and public IP and automatically configure things like TLS encryption for you.
 
-After the deployment, go to the Container App's *Overview* tab and open the URL to check that everything worke (it might take a few minutes for the initial startup after the creation of the Container App):
+After the deployment, go to the Container App's *Overview* tab and open the URL to check that everything works (it might take a few minutes for the initial startup after the creation of the Container App):
 
 ![image](./img/challenge-3-appurl.jpg)
 
