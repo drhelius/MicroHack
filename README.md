@@ -20,16 +20,16 @@
 
 ## MicroHack Context
 
-This MicroHack scenario walks through the modernization from an application what was hosted on [Azure Virtual Machines](https://azure.microsoft.com/en-us/products/virtual-machines) or in an [Azure App Service](https://azure.microsoft.com/en-us/products/app-service) to completely managed container based infrastructure, with a focus on the best practices and the design principles and some interesting challenges for real world scenarios. Specifically, this builds up to include working with an existing infrastructure in your datacenter.
+This MicroHack scenario walks you through the modernization of an application that was hosted on [Azure Virtual Machines](https://azure.microsoft.com/en-us/products/virtual-machines) or in an [Azure App Service](https://azure.microsoft.com/en-us/products/app-service) to a completely managed container-based infrastructure, with a focus on best practices, design principles, and some interesting challenges for real-world scenarios. Specifically, this builds up to include working with existing infrastructure in your datacenter.
 
 ## MicroHack Objectives
 
 After completing this MicroHack you will:
 
 * Understand containerization and hosting options on Azure
-* Know how to use the right tools for containerization from an existing application / workload in your environment, on-prem or Multi-cloud
-* Understand use cases and possible scenarios in your particular infrastructure to modernize your infrastructure estate 
-* Get insights into real world challenges and scenarios
+* Know how to use the right tools for containerization from an existing application/workload in your environment, on-premises, or multi-cloud
+* Understand use cases and possible scenarios in your particular infrastructure to modernize your infrastructure estate
+* Get insights into real-world challenges and scenarios
 
 ## MicroHack Challenges
 
@@ -109,7 +109,7 @@ When migrating from the App Service to a containerized hosting, which service wo
 ## Challenge 2 - Containerize the Application
 
 ### Goal
-Before the application can be deployed to a Container App, it needs to be containerized. As you already know, this means encapsulating the application code with all dependencies and required software into a container image. The images are typically stored ("pushed") in a container registry, from which they can loaded ("pulled") to be deployed into a container hosting service.
+Before the application can be deployed to a Container App, it needs to be containerized. As you already know, this means encapsulating the application code with all dependencies and required software into a container image. The images are typically stored ("pushed") in a container registry, from which they can be loaded ("pulled") to be deployed into a container hosting service.
 
 ### Actions
 
@@ -139,7 +139,7 @@ Before the application can be deployed to a Container App, it needs to be contai
 
 ### Goal
 
-Now that you have a deployable container image, you can setup the Container App to host you web app. As described above, you will use the Container Apps because it is a simple, scalable and straight-forward service that is perfectly suitable for this use case. However, the container image is highly portable and could be deployed into other container services as well.
+Now that you have a deployable container image, you can set up the Container App to host your web app. As described above, you will use Container Apps because it is a simple, scalable, and straightforward service that is perfectly suitable for this use case. However, the container image is highly portable and could be deployed into other container services as well.
 
 ### Actions
 
@@ -162,7 +162,7 @@ Hint: Use this workflow task to get the latest container image tag from the regi
 
 * You successfully deployed the container image to the Container App
 * You can access the newly hosted web app
-* You can make changes to the web app and deploy them into the Container App
+* You can make changes to the web app and deploy them to the Container App
 
 ### Learning resources
 
@@ -179,7 +179,7 @@ Hint: Use this workflow task to get the latest container image tag from the regi
 
 ### Goal
 
-Now that the app is up and running and you can deploy changes quickly, it is time to make some enhancements to make your application ready for production.
+Now that the app is up and running and you can deploy changes quickly, it is time to make some enhancements to get your application ready for production.
 
 ### Actions
 
@@ -210,7 +210,7 @@ Now that the app is up and running and you can deploy changes quickly, it is tim
 
 ### Goal
 
-Your production-ready Container App is still missing one thing, you cannot really use it for anything, yet. Time to host your own small AI model that you can chat with via the app.
+Your production-ready Container App is still missing one thing: you cannot really use it for anything yet. Time to host your own small AI model that you can chat with via the app.
 
 ### Actions
 
@@ -234,7 +234,7 @@ Your production-ready Container App is still missing one thing, you cannot reall
 ## Finish
 
 Congratulations! You finished!
-As you saw, containerizing and deploying an application is no rocket science. The Azure Container Apps will take over most of the work so you can focus on your application instead of the hosting.
+As you saw, containerizing and deploying an application is not rocket science. Azure Container Apps will take over most of the work so you can focus on your application instead of the hosting.
 
 Thank you for investing the time and see you next time!
 

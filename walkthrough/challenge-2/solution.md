@@ -4,27 +4,27 @@ Duration: 60 minutes
 
 ## Prerequisites
 
-Please make sure thet you successfully completed [Challenge 1](../challenge-1/solution.md) before continuing with this challenge.
+Please make sure that you have successfully completed [Challenge 1](../challenge-1/solution.md) before continuing with this challenge.
 
 ### **Task 1: Create an Azure Container Registry**
 
-Open the [Azure Portal](https://portal.azure.com) and login using a user account with at least Contributor permissions on a Azure Subscription.
+Open the [Azure Portal](https://portal.azure.com) and log in using a user account with at least Contributor permissions on an Azure Subscription.
 
-Search for *Container Registries* and click *Create*
+Search for *Container Registries* and click *Create*.
 
-In the *Basics* tab, select the resource group you want to deploy your new resources to (for this example you must use the same resource group you used to create the app service).
+In the *Basics* tab, select the resource group you want to deploy your new resources to (for this example, you must use the same resource group you used to create the app service).
 
-You need to give the container registry a name which needs to be globally unique since it will be accessible via a URL with the name in it (just like the web app), so you can use something like "microhackregistryxyz" (only alphanumeric characters are allowed).
+You need to give the container registry a name which must be globally unique since it will be accessible via a URL with the name in it (just like the web app), so you can use something like "microhackregistryxyz" (only alphanumeric characters are allowed).
 
-For this example you will choose "Spain Central" as location.
+For this example, you will choose "Spain Central" as the location.
 
-Select *Basic* as *Pricing plan* and leave the other settings/tabs as is, then hit *Review + create* and again *Create*:
+Select *Basic* as the *Pricing plan* and leave the other settings/tabs as is, then hit *Review + create* and again *Create*:
 
 ![image](./img/challenge-2-createregistry.jpg)
 
-### **Task 2: Setup a new GitHub Actions workflow in the repository to build the application**
+### **Task 2: Set up a new GitHub Actions workflow in the repository to build the application**
 
-Go to your GitHub repository and open the *Actions* tab. You will be prompted to eneable GitHub Actions for the repository. Click on *I understand my workflows, go ahead and enable them*.
+Go to your GitHub repository and open the *Actions* tab. You will be prompted to enable GitHub Actions for the repository. Click on *I understand my workflows, go ahead and enable them*.
 
 As you can see, there is already a workflow called "Build and Deploy to App Service" in place that is currently used for the Azure App Service. Click on *New workflow*:
 
@@ -40,26 +40,26 @@ Your workflow file should look like this:
 
 The file is currently named *dotnet.yml*. Rename the workflow YAML file to *workflow_containerapp.yml*. As you can see, the template is already filled with some settings and steps. Let's go through them line by line and make some first changes:
 
-* In line 4 the name of the workflow is set. Let's rename it to *Build and Deploy to Container App*
-* In line 6 to 10 the triggers when the workflow should run are defined. Currently, every time someone pushes something into the repository or someone makes a pull request the workflow will run. For simplicity, wou will only work with the main branch in GitHub directly, you should avoid automatically running the workflow. Replace the triggers with:<br>
+* In line 4, the name of the workflow is set. Let's rename it to *Build and Deploy to Container App*.
+* In lines 6 to 10, the triggers for when the workflow should run are defined. Currently, every time someone pushes something into the repository or someone makes a pull request, the workflow will run. For simplicity, you will only work with the main branch in GitHub directly, so you should avoid automatically running the workflow. Replace the triggers with:
 ```
 on:
   workflow_dispatch:
 ```
 
-(This will move everything below three lines up)
+(This will move everything below up by three lines)
 
-* From line 9 onwards the jobs are defined and steps are defined.
-* Line 12 tells GitHub to run the workflow on a Ubuntu Linux machine with the latest available version
-* From line 14 onwards the steps (sometimes called tasks) in the workflow are defined
-  * Each step invokes a command/script (indicated by *run*) or a pre-defined task (indicated by *uses*)
-  * Steps can have additional attributed like a name (for better readability)
-  * Some steps require inputs/configuration details that are listed under *with:*
-* Line 15 checkous the repository
-* Line 16 to 19 set up the required .NET tools for the workflow. The *dotnet-version* should be *8.0.x*
-* Line 21 to 22 restores (loads) dependencies in the project
-* Line 22 to 23 performs the build
-* Line 24 to 25 performs some automated tests. This line can be removed for now since this is not part of this MicroHack.
+* From line 9 onwards, the jobs and steps are defined.
+* Line 12 tells GitHub to run the workflow on an Ubuntu Linux machine with the latest available version.
+* From line 14 onwards, the steps (sometimes called tasks) in the workflow are defined:
+  * Each step invokes a command/script (indicated by *run*) or a pre-defined task (indicated by *uses*).
+  * Steps can have additional attributes like a name (for better readability).
+  * Some steps require inputs/configuration details that are listed under *with:*.
+* Line 15 checks out the repository.
+* Lines 16 to 19 set up the required .NET tools for the workflow. The *dotnet-version* should be *8.0.x*.
+* Lines 21 to 22 restore (load) dependencies in the project.
+* Lines 22 to 23 perform the build.
+* Lines 24 to 25 perform some automated tests. This line can be removed for now since this is not part of this MicroHack.
 
 Feel free to name all steps and format the code as you like. Your workflow should look something like this:
 
@@ -92,7 +92,7 @@ Feel free to name all steps and format the code as you like. Your workflow shoul
         - name: Build with dotnet
           run: dotnet build --no-restore
 
-Now hit *Commit changes* to save the workflow. In the dialoge, leave the fields as is and hit *Commit changes*.
+Now hit *Commit changes* to save the workflow. In the dialog, leave the fields as is and hit *Commit changes*.
 
 ![image](./img/challenge-2-commitworkflow.jpg)
 
@@ -100,17 +100,17 @@ Go to the *Actions* tab. As you can see, the new workflow appears in the list. C
 
 ![image](./img/challenge-2-runworkflow.jpg)
 
-The workflow will run for about a minute. You can have a look in the logs to see what is happening when clicking on the workflow run. After it has completed, you should see a green mark next to the workflow run:
+The workflow will run for about a minute. You can have a look in the logs to see what is happening by clicking on the workflow run. After it has completed, you should see a green mark next to the workflow run:
 
 ![image](./img/challenge-2-workflowtest.jpg)
 
 ### **Task 3: Create a Dockerfile and add it into the repository**
 
-In order the build a container image in a workflow, you need to define the steps how the container image is to be built. This is usually done via a Dockerfile that is then added to the repository. Open the *Code* tab to see your repository and then click on *Add file* -> *Create new file*:
+In order to build a container image in a workflow, you need to define the steps for how the container image will be built. This is usually done via a Dockerfile that is then added to the repository. Open the *Code* tab to see your repository and then click on *Add file* -> *Create new file*:
 
 ![image](./img/challenge-2-createdockerfile.jpg)
 
-Simply name it *Dockerfile* (without a file extension). This file will contain step-by-setp how the container image will be built. There are multiple ways to build the container image, the code below is only one possible solution:
+Simply name it *Dockerfile* (without a file extension). This file will contain step-by-step instructions for how the container image will be built. There are multiple ways to build the container image; the code below is only one possible solution:
 
     #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
     
@@ -135,16 +135,16 @@ Simply name it *Dockerfile* (without a file extension). This file will contain s
     ENTRYPOINT ["dotnet", "MicroHackApp.dll"]
 
 Let's quickly go over what happens in the Dockerfile:
-* Line 3 to 5 copy a base image that already contains a .NET runtime environment, a web server and some more dependencies so that you do not have to create everything from scratch. The working directory to store files is set to */app*. Port 8080 is opened, so your application will listen on this port for incoming requests.
-* Line 7 to 13 are used to compile to application code from the repository.
-* Line 15 to 16 are used to publish the ready-to-run application
-* Finally line 18 to 21 are used to create the final image that will later be deployed.
+* Lines 3 to 5 copy a base image that already contains a .NET runtime environment, a web server, and some more dependencies so that you do not have to create everything from scratch. The working directory to store files is set to */app*. Port 8080 is opened, so your application will listen on this port for incoming requests.
+* Lines 7 to 13 are used to compile the application code from the repository.
+* Lines 15 to 16 are used to publish the ready-to-run application.
+* Finally, lines 18 to 21 are used to create the final image that will later be deployed.
 
 Click on *Commit changes* on the top right corner to add the file to the repository.
 
 ![image](./img/challenge-2-dockerfile.jpg)
 
-Since you only want the application code (not the git files etc.) in your container image, you need to add a *.dockerignore* file. In it you list all the paths and files that should not be included in the container image. Create a file named *.dockerignore* and add it to the repository as well with the following content:
+Since you only want the application code (not the git files etc.) in your container image, you need to add a *.dockerignore* file. In it, you list all the paths and files that should not be included in the container image. Create a file named *.dockerignore* and add it to the repository as well with the following content:
 
     **/.classpath
     **/.dockerignore
@@ -174,23 +174,23 @@ Since you only want the application code (not the git files etc.) in your contai
 
 ### **Task 4: Add steps to the GitHub Actions workflow to containerize the application and push the image into the container registry**
 
-There are multiple ways to achieve that, this is only one solution. You can use the console commands to build and push a container image to the Azure container registry.
+There are multiple ways to achieve this; this is only one solution. You can use the console commands to build and push a container image to the Azure container registry.
 
-Before we can add the workflow tasks, we need to make some preparations. The workflow will need to login into the Container Regsitry with name and password. Ideally, you should always avoid credentials in plain text in your YAML files, instead you can save the credentials as secrets and use them instead. You can find the username and password of the Container Registry in the Azure portal under the *Access keys* tab. Make sure that the *Admin user* is ticked:
+Before we can add the workflow tasks, we need to make some preparations. The workflow will need to log in to the Container Registry with a name and password. Ideally, you should always avoid credentials in plain text in your YAML files; instead, you can save the credentials as secrets and use them instead. You can find the username and password of the Container Registry in the Azure portal under the *Access keys* tab. Make sure that the *Admin user* is ticked:
 
 ![image](./img/challenge-2-acrkeys.jpg)
 
-To add a secret in GitHub, open the *Settings* tab of the repository and go the the *Secrets and variables* -> *Actions* tab. Hit *New respository secret*:
+To add a secret in GitHub, open the *Settings* tab of the repository and go to the *Secrets and variables* -> *Actions* tab. Hit *New repository secret*:
 
 ![image](./img/challenge-2-createsecret.jpg)
 
-Create two secrets, *ACR_USERNAME* and *ACR_PASSWORD* to save the credentials:
+Create two secrets, *ACR_USERNAME* and *ACR_PASSWORD*, to save the credentials:
 
 ![image](./img/challenge-2-createsecret2.jpg)
 
 You can now access these secrets via *${{ secrets.<SECRET_NAME> }}* in the GitHub Actions workflow.
 
-Add this snippet as a task in your GitHub Actions workflow. The name of the container registry must match the name you choose in task 1:
+Add this snippet as a task in your GitHub Actions workflow. The name of the container registry must match the name you chose in task 1:
 
 
     - name: Build and Push Image
@@ -200,8 +200,8 @@ Add this snippet as a task in your GitHub Actions workflow. The name of the cont
         docker push microhackregistry.azurecr.io/microhackapp:1
 
 Via the `run` task you can execute console commands:
-* `docker login` is used to login to the Azure Container Registry with the `ACR_USERNAME` and the `ACR_PASSWORD`.
-* `docker build` is used to build the container image. The `-t` parameter sets the name of the image, the part after the `:` indicates the version (also called tag), in this case we simply use `1`. The `-f` parameter indicates the location of the Dockerfile (remember, this file includes the commands to build the container image), the `.` indicates that the file is in the repository.
+* `docker login` is used to log in to the Azure Container Registry with the `ACR_USERNAME` and the `ACR_PASSWORD`.
+* `docker build` is used to build the container image. The `-t` parameter sets the name of the image; the part after the `:` indicates the version (also called tag), in this case we simply use `1`. The `-f` parameter indicates the location of the Dockerfile (remember, this file includes the commands to build the container image); the `.` indicates that the file is in the repository.
 * `docker push` is then used to upload the container image into the Azure Container Registry.
 
 Save the changes and commit the file, then run the workflow:
@@ -212,6 +212,6 @@ Check the container repository in the Azure Container Registry to make sure that
 
 ![image](./img/challenge-2-acrimage.jpg)
 
-You successfully completed challenge 2! 🚀🚀🚀
+You have successfully completed challenge 2! 🚀🚀🚀
 
  **[Home](../../README.md)** - [Next Challenge Solution](../challenge-3/solution.md)
