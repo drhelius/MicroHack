@@ -24,7 +24,9 @@ Select *Basic* as *Pricing plan* and leave the other settings/tabs as is, then h
 
 ### **Task 2: Setup a new GitHub Actions workflow in the repository to build the application**
 
-Go to your GitHub repository and open the *Actions* tab. As you can see, there is already a workflow called "Build and Deploy to App Service" in place that is currently used for the Azure App Service. Click on *New workflow*:
+Go to your GitHub repository and open the *Actions* tab. You will be prompted to eneable GitHub Actions for the repository. Click on *I understand my workflows, go ahead and enable them*.
+
+As you can see, there is already a workflow called "Build and Deploy to App Service" in place that is currently used for the Azure App Service. Click on *New workflow*:
 
 ![image](./img/challenge-2-newworkflow.jpg)
 
@@ -39,7 +41,7 @@ Your workflow file should look like this:
 The file is currently named *dotnet.yml*. Rename the workflow YAML file to *workflow_containerapp.yml*. As you can see, the template is already filled with some settings and steps. Let's go through them line by line and make some first changes:
 
 * In line 4 the name of the workflow is set. Let's rename it to *Build and Deploy to Container App*
-* In line 6 to 10 the triggers when the workflow should run are defined. Currently, every time someone pushes something into the repository or someone makes a pull request the workflow will run. Since you will for the sake of simplicity only work with the main branch in GitHub directly, you should avoid automatically running the workflow. Replace the triggers simply with:<br>
+* In line 6 to 10 the triggers when the workflow should run are defined. Currently, every time someone pushes something into the repository or someone makes a pull request the workflow will run. For simplicity, wou will only work with the main branch in GitHub directly, you should avoid automatically running the workflow. Replace the triggers with:<br>
 ```
 on:
   workflow_dispatch:
@@ -59,7 +61,7 @@ on:
 * Line 22 to 23 performs the build
 * Line 24 to 25 performs some automated tests. This line can be removed for now since this is not part of this MicroHack.
 
-Feel free to name all steps and format the code as you like. Your workflow should in the end look something like this:
+Feel free to name all steps and format the code as you like. Your workflow should look something like this:
 
     # This workflow will build a .NET project
     # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
@@ -142,7 +144,7 @@ Click on *Commit changes* on the top right corner to add the file to the reposit
 
 ![image](./img/challenge-2-dockerfile.jpg)
 
-Since you only want the application code (not the git files etc.) in your container image, you need to add a *dockerignore* file. In there you list all the paths and files that should not be included in the container image. Create a file named *dockerignore* (again without file extension) and add it to the repository as well:
+Since you only want the application code (not the git files etc.) in your container image, you need to add a *.dockerignore* file. In it you list all the paths and files that should not be included in the container image. Create a file named *.dockerignore* and add it to the repository as well with the following content:
 
     **/.classpath
     **/.dockerignore
@@ -212,4 +214,4 @@ Check the container repository in the Azure Container Registry to make sure that
 
 You successfully completed challenge 2! 🚀🚀🚀
 
- **[Home](../../Readme.md)** - [Next Challenge Solution](../challenge-3/solution.md)
+ **[Home](../Readme.md)** - [Next Challenge Solution](../challenge-3/solution.md)
