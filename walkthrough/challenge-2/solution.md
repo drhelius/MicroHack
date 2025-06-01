@@ -214,4 +214,4 @@ Check the container repository in the Azure Container Registry to make sure that
 
 You successfully completed challenge 2! 🚀🚀🚀
 
- **[Home](../Readme.md)** - [Next Challenge Solution](../challenge-3/solution.md)
+ **[Home](../../README.md)** - [Next Challenge Solution](../challenge-3/solution.md)

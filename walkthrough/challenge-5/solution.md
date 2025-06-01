@@ -64,4 +64,4 @@ As you can see, you can easily host applications or AI models and let them work 
 
 You successfully completed challenge 5! 🚀🚀🚀
 
- **[Home](../Readme.md)**
+ **[Home](../../README.md)**

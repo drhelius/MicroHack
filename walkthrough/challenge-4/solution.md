@@ -61,4 +61,4 @@ Remember, you can create custom domains and manage certificates in Azure as well
 
 You successfully completed challenge 4! 🚀🚀🚀
 
- **[Home](../Readme.md)** - [Next Challenge Solution](../challenge-5/solution.md)
+ **[Home](../../README.md)** - [Next Challenge Solution](../challenge-5/solution.md)

@@ -220,4 +220,4 @@ Right now, your workflow still uses the ACR name and password to authenticate to
 
 You successfully completed challenge 3! 🚀🚀🚀
 
- **[Home](../Readme.md)** - [Next Challenge Solution](../challenge-4/solution.md)
+ **[Home](../../README.md)** - [Next Challenge Solution](../challenge-4/solution.md)
