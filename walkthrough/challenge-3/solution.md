@@ -83,7 +83,7 @@ In the *Settings* section, go on the *Federated credentials tab* and hit *+ Add 
 ![image](./img/challenge-3-identitycredentials.jpg)
 
 Here, you must be very precise:
-* As *Federated credentiual screnario* you must choose `Configure a GitHub issued token to impersonate this application and deploy to Azure`.
+* As *Federated credential scenario* you must choose `Configure a GitHub issued token to impersonate this application and deploy to Azure`.
 * Select your GitHub organization name (most likely your GitHub name). You can look it up on the GitHub page: ![image](./img/chellenge-3-githuborgname.jpg)
 * The *Repository* is ``MicroHack-AppServiceToContainerApp` if you did not change it.
 * As *Entity* you must choose `Branch` and as *Branch* set `main`
@@ -131,7 +131,20 @@ Then add this step to login to Azure with the managed identity. You can add it a
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-Right now, all container images are pushed into the registry with the tag "1", which means this version of the image is overwritten on every push. To change this, there are mutliple ways, this is just one solution. Add the step from the hints before the *Build and Push Image* step. It checks the registry for the latest image tag, then increments it by one for the next version and saves this tag in a variable named `image_tag`. Replace the hard-coded "1" behind the container images in the *Build and Push Image* tasks with this `${{ steps.get_tag.outputs.image_tag }}` to use the variable.
+Right now, all container images are pushed into the registry with the tag "1", which means this version of the image is overwritten on every push. To change this, there are mutliple ways, this is just one solution. Add this step before the *Build and Push Image* step and make sure you change the name of the registry with your own registry name:
+
+    - name: Get Latest Container Image Tag
+      id: get_tag
+      run: |
+        TAG=$(az acr repository show-tags --name microhackregistry --repository microhackapp --orderby time_desc --output tsv --detail | head -n 1 | awk '{print $4}')
+        NUMERIC_TAG=$(echo "$TAG" | grep -oE '[0-9]+')
+        INCREMENTED_TAG=$((NUMERIC_TAG + 1))
+        UPDATED_TAG=$(echo "$TAG" | sed "s/$NUMERIC_TAG/$INCREMENTED_TAG/")
+        echo "image_tag=$UPDATED_TAG" >> $GITHUB_OUTPUT
+
+It checks the registry for the latest image tag, then increments it by one for the next version and saves this tag in a variable named `image_tag`.
+
+Replace the hard-coded "1" behind the container images in the *Build and Push Image* task with this `${{ steps.get_tag.outputs.image_tag }}` to use the variable.
 
 Lastly, you need to add a step at the end of the workflow to actually re-deploy the Container App. You can write your own script or use a pre-defined task form the marketplace like the *Container Apps Deploy* step:
 <br>https://github.com/Azure/container-apps-deploy-action
@@ -148,9 +161,9 @@ Lastly, you need to add a step at the end of the workflow to actually re-deploy 
         targetPort: 8080
 
 The step takes some parameters, let's have a closer look:
-* `imageToDeploy` indicates the container image (container registry/container repository/image name:image tag)
+* `imageToDeploy` indicates the container image (container registry/container repository/image name:image tag). Make sure to use the same registry and repository name as you used in the *Build and Push Image* step.
 * `acrUsername` and `acrPassword` are used to authenticate to the Azure Container Registry
-* `resourceGroup`, `containerAppEnvironment` and `containerAppName` are used to identify the Container App
+* `resourceGroup`, `containerAppEnvironment` and `containerAppName` are used to identify the Container App. Make sure to use the same names as you used when creating the Container App and Environment.
 * `targetPort` should be the same you defined in the Dockerfile
 
 Your pipeline should now look like this:
@@ -223,7 +236,7 @@ jobs:
         targetPort: 8080
 ```
 
-You can now make a change to the app and then deploy it to the Container App. Open the `index.cshtml` file in the repository (on *Code* tab in the *Pages* folder) and make add a new line to the landing page of the app, then commit the change and run the workflow again:
+You can now make a change to the app and then deploy it to the Container App. Open the `index.cshtml` file in the repository (on *Code* tab in the *Pages* folder) and add a new line to the landing page of the app, then commit the change and run the workflow again:
 
 ![image](./img/challenge-3-changes.jpg)
 
