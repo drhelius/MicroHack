@@ -1,3 +1,5 @@
+![MicroHack Logo](img/logo.jpg)
+
 # MicroHack AppService to ContainerApps
 
 - [**MicroHack Introduction**](#MicroHack-introduction)
