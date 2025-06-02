@@ -40,7 +40,7 @@ Give the container a name (e.g., "microhack-webapp") and select an image to depl
 
 You want to deploy an image from the Azure Container Registry, so select the registry you created, the image, and the tag.
 
-It is recommended to use Managed Identity to authenticate to the Azure Container Registry. But due to the fact you are using a shared subscription with limited permissions, you will need to use *Secret-based* authentication.
+Select Managed Identity to authenticate to the Azure Container Registry. 
 
 You can also select the amount of resources you want to allocate to the Container App; 1 CPU core and 2 Gi memory should work for now. Leave the *Command override*, *Development stack*, and *Environment variables* as is.
 
