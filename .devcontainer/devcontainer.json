@@ -1,0 +1,25 @@
+{
+    "name": "microhack",
+    "image": "mcr.microsoft.com/devcontainers/dotnet:9.0",
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    "features": {
+        "ghcr.io/devcontainers/features/azure-cli:1": {},
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+    // Configure tool-specific properties.
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "dotnet.defaultSolution": "disable"
+            },
+            "extensions": [
+                "ms-dotnettools.csharp",
+                "ms-dotnettools.csdevkit",
+                "ms-dotnettools.vscode-dotnet-runtime",
+                "ms-vscode.azurecli",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}
