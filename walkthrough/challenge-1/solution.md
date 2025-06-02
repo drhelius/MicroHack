@@ -2,7 +2,7 @@
 
 Duration: 30 minutes
 
-### **Familiarize yourself with the app/environment**
+## **Familiarize yourself with the app/environment**
 
 * In which framework and version is the application written?
 
@@ -26,7 +26,7 @@ Duration: 30 minutes
 
     <p>Important: You can ignore the text fields and the button for now; the functionality behind them will be added in the last challenge. You can try them out, but nothing is going to happen (yet). You will probably see something like this: "Error: Failed to execute 'json' on 'Response': Unexpected end of JSON input"</p>
 
-### **Read through the learning resources**
+## **Read through the learning resources**
 
 * What is containerization and what is a container?
 	<p>
@@ -66,6 +66,8 @@ When migrating from App Service to containerized hosting, which service would be
 	<p>
     Container Instances are a great service to host applications that do not require scalability; therefore, they are not suitable for our web app. Kubernetes is a very powerful service but brings along a lot of complexity and management effort (cluster management, monitoring, debugging, networking, etc.). Container Apps is a simple, cost-effective way to host the web app.
     </p>
+
+## **End of Challenge 1**
 
 You have successfully completed challenge 1! 🚀🚀🚀
 

@@ -1,6 +1,6 @@
 ![MicroHack Logo](img/logo.jpg)
 
-# MicroHack AppService to ContainerApps
+# MicroHack App Service to Container Apps
 
 - [**MicroHack Introduction**](#MicroHack-introduction)
   - [What is the next generation of modernization and why does it matter](#what-is-the-next-generation-of-modernization-and-why-does-it-matter)

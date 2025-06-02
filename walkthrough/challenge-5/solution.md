@@ -6,7 +6,7 @@ Duration: 60 minutes
 
 Please make sure that you have successfully completed [Challenge 4](../challenge-4/solution.md) before continuing with this challenge.
 
-### **Task 1: Host the Ollama container image**
+## **Task 1: Host the Ollama container image**
 
 The web interface is already prepared; you can check it in the *Index.cshtml* file in the *Pages/Shared* folder in the repository. It takes the input from the text field and then calls an API where the AI model is hosted. Let's begin with hosting the model.
 
@@ -26,7 +26,7 @@ On the *Ingress* tab, enable the ingress and set it to `Accept traffic from anyw
 
 ![image](./img/challenge-5-createapp-ingress.jpg)
 
-### **Task 2: Start the Llama 3.2 model**
+## **Task 2: Start the Llama 3.2 model**
 
 Now that the Container App is running, you still need to activate the llama 3.2 model. Open the Azure Shell: https://portal.azure.com/#cloudshell/
 
@@ -44,7 +44,7 @@ After the model is loaded, you can already chat with it:
 
 The model is now up and running. Every time the container shuts down, you will need to re-run these commands. To prevent the app from shutting down, set the minimum number of replicas to 1 (as you did in challenge 4 with the other app).
 
-### **Task 3: Connect the Web App with the API**
+## **Task 3: Connect the Web App with the API**
 
 You will need the *Application Url* from the *microhack-aiapp*; copy it to the clipboard.
 
@@ -60,6 +60,8 @@ environmentVariables: |
 You can run the workflow to deploy the new version. It will pick up the API URL and use that to connect to the *microhack-aiapp* to call the model. After it has been successfully deployed, you should be able to send prompts from your web app (it might be a little slow, though).
 
 As you can see, you can easily host applications or AI models and let them work together. Container Apps allow you to focus on your applications and functionality, while infrastructure, networking, encryption, etc. are configured automatically for you.
+
+## **End of Challenge 5**
 
 You have successfully completed challenge 5! 🚀🚀🚀
 

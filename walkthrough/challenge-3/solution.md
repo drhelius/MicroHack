@@ -6,7 +6,7 @@ Duration: 60 minutes
 
 Please make sure that you have successfully completed [Challenge 2](../challenge-2/solution.md) before continuing with this challenge.
 
-### **Task 1: Create the Container App and the Environment**
+## **Task 1: Create the Container App and the Environment**
 
 Open the [Azure Portal](https://portal.azure.com) and navigate to the resource group where you deployed the Container Registry. Click *Create* in the top left corner and search for *Container App*, select the *Container App* resource and hit *Create*.
 
@@ -64,7 +64,7 @@ After the deployment, go to the Container App's *Overview* tab and open the URL 
 
 As you can see, it just requires a few clicks to deploy a container image - no cluster management, no infrastructure configuration, no networking setup - everything is managed for you!
 
-### **Task 2: Automate the deployment with GitHub Actions**
+## **Task 2: Automate the deployment with GitHub Actions**
 
 You selected a container image to deploy into the Container App. But what if you make changes and update your app? Always deploying it manually might be inconvenient; instead, you want to automate the deployment in your GitHub Actions workflow.
 
@@ -181,9 +181,11 @@ Open and run the Container App again to verify that the changes worked:
 
 ![image](./img/chellenge-3-result.jpg)
 
-### **On the usage of ACR Credentials**
+## **On the usage of ACR Credentials**
 
 Right now, your workflow still uses the ACR name and password to authenticate to the Azure Container Registry. Generally, you should avoid using credentials like that (which is why you used a managed identity for the rest). The problem is that right now it is either not directly possible or requires a significant workaround to use managed identities to build and push images into the ACR from GitHub Actions, which would be a little too much for this MicroHack. For updates on the *Azure Container Apps Build and Deploy* task, please refer to this: https://github.com/Azure/container-apps-deploy-action
+
+## **End of Challenge 3**
 
 You have successfully completed challenge 3! 🚀🚀🚀
 

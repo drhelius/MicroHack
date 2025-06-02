@@ -6,7 +6,7 @@ Duration: 60 minutes
 
 Please make sure that you have successfully completed [Challenge 3](../challenge-3/solution.md) before continuing with this challenge.
 
-### **Task 1: Enable Authentication with Azure Entra ID**
+## **Task 1: Enable Authentication with Azure Entra ID**
 
 You can quickly integrate an Azure Container App with Azure Entra ID (or any other OIDC identity provider like GitHub, Facebook, Google, etc.) without changing the implementation of the app. Simply go to the *Authentication* tab of the Container App and hit *Add identity provider*:
 
@@ -28,7 +28,7 @@ Mark `Require authentication` to make sure only authenticated users can access t
 
 This will deploy a sidecar container to your app. Before a user can access the container that hosts your web app, the user has to authenticate against Azure Entra ID. You can open the app again to check if it works. Since you are probably already logged in with your Azure account, you might be authenticated automatically. If you open the app URL in private mode, you will see that authentication is required and you will need to log in with your Azure account.
 
-### **Task 2: Configure Autoscaling**
+## **Task 2: Configure Autoscaling**
 
 A single Container App instance will not be able to endlessly serve an increasing number of users.
 
@@ -44,7 +44,7 @@ Next, click on *+ Add* under *Scale rule*. Give the rule a name, e.g., "http-sca
 
 As you can see, you can simply configure the scaling of your app without managing infrastructure, configuring load balancing, or setting up orchestration - you just need a few clicks and the work is done for you in the background!
 
-### **Task 3: Enable Monitoring and Logging**
+## **Task 3: Enable Monitoring and Logging**
 
 In production scenarios, you want to know what is happening in your systems. Observability is important. You can simply enable monitoring and logging for your Azure Container Apps.
 
@@ -60,7 +60,7 @@ You may need to wait some time until the logs start showing up in the Log Analyt
 
 ![image](./img/challenge-4-loggingquery.jpg)
 
-### **Task 4: Configure encryption**
+## **Task 4: Configure encryption**
 
 Encrypting traffic is crucial to secure the communication from the clients to the Container App. You will require a certificate that must be signed by a trusted certificate authority, then you need to configure your application to use the certificate (both in the application code and in the Dockerfile!), then you also need to store the certificate somewhere (e.g. in a vault) where it can be accessed securely. And lastly, you need to change the application to redirect HTTP to HTTPS.
 
@@ -71,6 +71,8 @@ The good news is that Azure Container Apps takes care of all of this for you. Wh
 By default, Container Apps use HTTPS and provide a managed certificate, so there’s no need to obtain and manage your own certificate. Additionally, any unencrypted HTTP traffic is automatically redirected to HTTPS, ensuring that all communications are secure — without you needing to do anything extra!
 
 Remember, you can create custom domains and manage certificates in Azure as well!
+
+## **End of Challenge 4**
 
 You have successfully completed challenge 4! 🚀🚀🚀
 

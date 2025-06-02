@@ -6,7 +6,7 @@ Duration: 60 minutes
 
 Please make sure that you have successfully completed [Challenge 1](../challenge-1/solution.md) before continuing with this challenge.
 
-### **Task 1: Create an Azure Container Registry**
+## **Task 1: Create an Azure Container Registry**
 
 Open the [Azure Portal](https://portal.azure.com) and log in using a user account with at least Contributor permissions on an Azure Subscription.
 
@@ -22,7 +22,7 @@ Select *Basic* as the *Pricing plan* and leave the other settings/tabs as is, th
 
 ![image](./img/challenge-2-createregistry.jpg)
 
-### **Task 2: Set up a new GitHub Actions workflow in the repository to build the application**
+## **Task 2: Set up a new GitHub Actions workflow in the repository to build the application**
 
 Go to your GitHub repository and open the *Actions* tab. You will be prompted to enable GitHub Actions for the repository. Click on *I understand my workflows, go ahead and enable them*.
 
@@ -104,7 +104,7 @@ The workflow will run for about a minute. You can have a look in the logs to see
 
 ![image](./img/challenge-2-workflowtest.jpg)
 
-### **Task 3: Create a Dockerfile and add it into the repository**
+## **Task 3: Create a Dockerfile and add it into the repository**
 
 In order to build a container image in a workflow, you need to define the steps for how the container image will be built. This is usually done via a Dockerfile that is then added to the repository. Open the *Code* tab to see your repository and then click on *Add file* -> *Create new file*:
 
@@ -172,7 +172,7 @@ Since you only want the application code (not the git files etc.) in your contai
     LICENSE
     README.md
 
-### **Task 4: Add steps to the GitHub Actions workflow to containerize the application and push the image into the container registry**
+## **Task 4: Add steps to the GitHub Actions workflow to containerize the application and push the image into the container registry**
 
 There are multiple ways to achieve this; this is only one solution. You can use the console commands to build and push a container image to the Azure container registry.
 
@@ -211,6 +211,8 @@ Save the changes and commit the file, then run the workflow:
 Check the container repository in the Azure Container Registry to make sure that the container image was pushed successfully:
 
 ![image](./img/challenge-2-acrimage.jpg)
+
+## **End of Challenge 2**
 
 You have successfully completed challenge 2! 🚀🚀🚀
 
