@@ -39,10 +39,18 @@ This MicroHack has a few but important prerequisites to be understood before sta
 
 * You will be provided with a shared Azure subscription: Please note your user and password.
 * You need your own [GitHub account](https://github.com/)
-* [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) (recommended but can also be done in Azure Cloud Shell)
-* [Visual Studio Code](https://code.visualstudio.com/) (recommended but can also be done in GitHub web editor)
+* [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) (recommended but can also be done in Azure Cloud Shell or GitHub Codespaces)
+* [Visual Studio Code](https://code.visualstudio.com/) (or GitHub Codespaces)
 
-You will work in a shared Azure subscription. Once you login you will have access to a resource group named as your user name. You will be able to create resources in this resource group. All instructions in this MicroHack will use your user name as the resource group name, e.g. if your user name is "johndoe" then you will use "johndoe" as the resource group name in all commands.
+You will work in a shared Azure subscription. Once you login you will have access to a resource group named as your user name. You will be able to create resources in this resource group. All instructions in this MicroHack will use your user name as the resource group name, e.g. if your user name is "johndoe" then you will use "johndoe" as the resource group name in all commands. Login command if needed (Ex: when using a terminal in GitHub Codespaces):
+
+`az login` 
+
+    Copy the code and paste in the text box. Then, use the user and password.
+
+List you resource group:
+
+`az group list --query "[].name" -o tsv` 
 
 Execute this script either in your local machine or in Azure Cloud Shell to deploy the initial App Service resource that you will use in your resource group:
 
@@ -60,6 +68,8 @@ To create the web app, you need to run this command. Web app names must be globa
 It may take up to 5 minutes for the web app to start in the background.
 
 You also need to fork this GitHub repository that you will work with: https://github.com/ArneDecker3v08mk/MicroHack-AppServiceToContainerAppStart
+
+Once forked, create the `.devcontainer/devcontainer.json`. You can use the one that it is stored in this repository.
 
 ## Challenge 1 - Understand the migratable estate 
 
