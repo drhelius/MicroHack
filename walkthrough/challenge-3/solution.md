@@ -85,7 +85,7 @@ In the *Settings* section, go to the *Federated credentials* tab and hit *+ Add 
 Here, you must be very precise:
 * As *Federated credential scenario*, you must choose `Configure a GitHub issued token to impersonate this application and deploy to Azure`.
 * Select your GitHub organization name (most likely your GitHub name). You can look it up on the GitHub page: ![image](./img/chellenge-3-githuborgname.jpg)
-* The *Repository* is `MicroHack-AppServiceToContainerApp` if you did not change it.
+* The *Repository* is `MicroHack-AppServiceToContainerAppStart` if you did not change it.
 * As *Entity*, you must choose `Branch` and as *Branch* set `main`.
 * The name is `microhack-identitycredentials`.
 
