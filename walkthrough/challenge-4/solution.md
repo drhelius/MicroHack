@@ -56,7 +56,7 @@ You may need to wait some time until the logs start showing up in the Log Analyt
 
     ContainerAppConsoleLogs_CL
     | where ContainerAppName_s == "microhack-containerapp"
-    | where Log contains "Request finished"
+    | where Log_s contains "Request finished"
 
 ![image](./img/challenge-4-loggingquery.jpg)
 
