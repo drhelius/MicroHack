@@ -55,7 +55,7 @@ Go to the *Logging options* in the *Monitoring* section of the Container Apps En
 You may need to wait some time until the logs start showing up in the Log Analytics workspace. You can play around with queries and check what information is available in the logs. Open the *Logs* tab of the Container App and create a new query. For example, you can check all the successful requests with this query (make sure to replace the `ContainerAppName` with the name of your Container App):
 
     ContainerAppConsoleLogs_CL
-    | where ContainerAppName == "microhack-containerapp"
+    | where ContainerAppName_s == "microhack-containerapp"
     | where Log contains "Request finished"
 
 ![image](./img/challenge-4-loggingquery.jpg)
