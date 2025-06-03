@@ -54,7 +54,7 @@ List you resource group:
 
 Execute this script either in your local machine or in Azure Cloud Shell to deploy the initial App Service resource that you will use in your resource group:
 
-`az appservice plan create --name "microhack-appserviceplan" --resource-group "<your_user_name>" --location "spaincentral" --is-linux --sku "FREE"`
+`az appservice plan create --name "microhack-appserviceplan" --resource-group "<your_user_name>" --location "spaincentral" --is-linux --sku "B1"`
 
 To create the web app, you need to run this command. Web app names must be globally unique, since the name will be used in the URL. You can name the web app something like "microhack-webapp-" and then append your username or some random characters, e.g. "microhack-webapp-johndoe22" or "microhack-webapp-jdkas":
 
